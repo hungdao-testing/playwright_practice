@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Debug",
+            "env": {
+                "PWDEBUG": "console",
+                // "NODE_ENV":"stag"
+            },
+            "runtimeExecutable": "npx",
+            "runtimeArgs": ["cross-env", "playwright", "test", "--grep @debug", "--headed"],
+            "skipFiles": [
+                "<node_internals>/**/*.js"
+              ],
+            // "program": "${workspaceFolder}\\tests\\pages\\livesite\\QuickView.ts",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js",
+                "${workspaceFolder}/node_modules/**/*.js"
+            ],
+            "smartStep": true,
+            "console": "integratedTerminal"
+        
+        }
+    ]
+}

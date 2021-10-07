@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import GoogleMainPage from './main/GoogleMainPage';
 import GoogleResult from './result/GoogleResult';
 
@@ -6,7 +6,7 @@ import GoogleResult from './result/GoogleResult';
 let googleMainPage: GoogleMainPage;
 let googleResultPage: GoogleResult;
 
-test('Search keyword @srp', async({page}) => {
+test('Search keyword @srp', async ({ page }) => {
     const keyword = "playwright";
     const index = 3;
 
@@ -28,8 +28,8 @@ test('Search keyword @srp', async({page}) => {
     await googleResultPage.searchSuggestion.clickSuggestionByIndex(index);
     await googleResultPage.navigationBar.goToNewsTab();
 
-     const stat = await googleResultPage.resultStat.getStat();
-     console.log(stat)
+    const stat = await googleResultPage.resultStat.getStat();
+    console.log(stat)
 
 
 })

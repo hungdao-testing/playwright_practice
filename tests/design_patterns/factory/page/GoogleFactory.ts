@@ -11,9 +11,7 @@ export enum LANG {
     "ARABIC"
 }
 
-
 export class GoogleFactory {
-
 
     public static get(lang: keyof typeof LANG, page: Page) {
         const googleLang: Record<keyof typeof LANG, GooglePage> = {
@@ -23,7 +21,6 @@ export class GoogleFactory {
         }
         return googleLang[lang];
     }
-
 
 }
 

@@ -13,7 +13,7 @@
                 // "NODE_ENV":"stag"
             },
             "runtimeExecutable": "npx",
-            "runtimeArgs": ["cross-env", "playwright", "test", "--grep @factory", "--headed"],
+            "runtimeArgs": ["cross-env", "playwright", "test", "--grep @netbanking", "--headed"],
             "skipFiles": [
                 "<node_internals>/**/*.js"
               ],

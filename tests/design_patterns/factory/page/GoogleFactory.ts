@@ -13,6 +13,7 @@ export enum LANG {
 
 export class GoogleFactory {
 
+
     public static get(lang: keyof typeof LANG, page: Page) {
         const googleLang: Record<keyof typeof LANG, GooglePage> = {
             "ENGLISH": new GoogleEnglish(page),

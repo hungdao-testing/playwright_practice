@@ -1,20 +1,20 @@
-export type ICreditCard = { "cc": string, "year": string, "cvv": string }
-export type INetBanking = { "bank": string, "account": string, "pin": string }
+export type CreditCardObj = { "cc": string, "year": string, "cvv": string }
+export type NetBankingObj = { "bank": string, "account": string, "pin": string }
 
 // Ref: https://stackoverflow.com/questions/53392498/avoid-typescript-casting-inside-a-switch
-export type TPaymentData = {
-    CREDIT_CARD: ICreditCard,
-    NET_BANKING: INetBanking
+export type PaymentObjectType = {
+    CREDIT_CARD: CreditCardObj,
+    NET_BANKING: NetBankingObj
 }
 
-export type TPaymentSelection = keyof TPaymentData;
-export type TPaymentObject<T extends TPaymentSelection> = T extends any ? {
+export type PaymentType = keyof PaymentObjectType;
+export type PaymentObject<T extends PaymentType> = T extends any ? {
     type: T;
-    data: TPaymentData[T];
+    data: PaymentObjectType[T];
 } : never;
 
 
 export interface IPaymentStrategy {
-    enterPaymentInformation(paymentDetails: TPaymentObject<TPaymentSelection>['data']): Promise<void>
+    enterPaymentInformation(paymentDetails: PaymentObject<PaymentType>['data']): Promise<void>
 }
 

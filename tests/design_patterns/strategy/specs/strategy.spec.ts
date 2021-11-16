@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { TPaymentObject, TPaymentSelection } from '../pages/payment/PaymentStrategy';
+import { PaymentObject, PaymentType } from '../pages/payment/PaymentStrategy';
 import PaymentScreen from '../pages/PaymentScreen';
 
 
@@ -11,7 +11,7 @@ test.describe.parallel('Payment Strategy @strategy', () => {
 
     test("Credit card @creditcard", async ({ page }) => {
 
-        const credit_card: TPaymentObject<TPaymentSelection> = {
+        const credit_card: PaymentObject<PaymentType> = {
             "type": "CREDIT_CARD",
             "data": {
                 "year": "2010",
@@ -30,7 +30,7 @@ test.describe.parallel('Payment Strategy @strategy', () => {
 
     test("Net Banking @netbanking", async ({ page }) => {
 
-        const net_banking: TPaymentObject<TPaymentSelection> = {
+        const net_banking: PaymentObject<PaymentType> = {
             "type": "NET_BANKING",
             "data": {
                 bank: "WELLS FARGO",

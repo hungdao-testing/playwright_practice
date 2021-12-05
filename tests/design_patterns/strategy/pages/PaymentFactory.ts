@@ -1,4 +1,4 @@
-import { IPaymentStrategy, TPaymentSelection } from "./payment/PaymentStrategy";
+import { IPaymentStrategy, PaymentType } from "./payment/PaymentStrategy";
 import CreditCard from "./payment/CreditCard";
 import NetBanking from "./payment/NetBanking";
 import { Page } from "@playwright/test";
@@ -16,8 +16,8 @@ export default class PaymentFactory {
     return this._page;
   }
 
-  public static setPayment(type: TPaymentSelection) {
-    const map: Record<TPaymentSelection, IPaymentStrategy> = {
+  public static setPayment(type: PaymentType) {
+    const map: Record<PaymentType, IPaymentStrategy> = {
       "CREDIT_CARD": new CreditCard(PaymentFactory.getPageInstance()),
       "NET_BANKING": new NetBanking(PaymentFactory.getPageInstance())
     }

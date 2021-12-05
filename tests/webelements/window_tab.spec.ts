@@ -23,10 +23,10 @@ test("tc01: windows/tab ", async({page}) => {
         page.click("a:has-text('FACEBOOK')")
     ])
     await page.waitForLoadState();
-    expect(await facebookTab.title()).toEqual("Facebook - Đăng nhập hoặc đăng ký");
+    expect(await facebookTab.title()).toEqual("Facebook – log in or sign up");
     await googleTab.bringToFront()
     await googleTab.fill('[name="q"]', "");
-    await googleTab.fill('[name="q"]', "Facebook - Đăng nhập hoặc đăng ký");
+    await googleTab.fill('[name="q"]', "Facebook – log in or sign up");
     await page.bringToFront()
 
 

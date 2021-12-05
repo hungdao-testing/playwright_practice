@@ -11,7 +11,7 @@ test("Upload", async ({ page }) => {
     const frameContent = await frameEle.contentFrame();
     expect(await frameContent.innerText('h3')).toEqual("A demonstration of how to access a File Upload Button")
     // await frameContent.waitForSelector("input#myFile")
-    await frameContent.setInputFiles("input#myFile", 'D:\\personal\\projects\\playwright_test\\upload_files\\image1.jpg');
+    await frameContent.setInputFiles("input#myFile", './upload_files/image1.jpg');
 })
 
 test("Upload multiple file @debug", async({page}) => {

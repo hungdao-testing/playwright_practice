@@ -5,11 +5,13 @@ import { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
   testDir: "tests",
+  timeout: 50 * 60 * 1000,
   use: {
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
-    navigationTimeout: 120000,
+    navigationTimeout: 1200000,
+    
   },
   projects:[
       {

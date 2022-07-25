@@ -4,8 +4,12 @@ async function scrollToRowId(rowId: string, tableLocator: Locator, selectorOfRow
   await tableLocator.locator('tbody').hover();
   let isScroll = true;
   while (isScroll) {
+    // wait for lazy-loading (on test case 'with Lazy Loading') to be disappeared (detach from DOM)
     await tableLocator.locator('tbody').page().waitForSelector('.p-scroller-loading', {state: 'hidden'})
+
+    // intermediate selector: get all rows has id containing text `rowId`
     let queryLocator = tableLocator.locator(`*css=${selectorOfRowId}`).filter({ hasText: rowId });
+    
     let isVisible = await queryLocator.isVisible();
     if (isVisible) {
       isScroll = false;
@@ -18,7 +22,7 @@ async function scrollToRowId(rowId: string, tableLocator: Locator, selectorOfRow
 }
 
 test.describe.parallel('Virtual scrolling', () => {
-  test('with Preloaded Data - Scroll to find a record and get content', async ({}, testInfo) => {
+  test('with Preloaded Data - Scroll to find a record and get content @preload', async ({}, testInfo) => {
     const browser = await chromium.launch({headless: true});
     const browserContext = await browser.newContext();
     const page = await browserContext.newPage();
@@ -36,7 +40,7 @@ test.describe.parallel('Virtual scrolling', () => {
     expect(text.length).toBeGreaterThan(1);
 
   });
-  test('with Lazy Loading from a Remote Datasource - Scroll to find a record and get content', async ({}) => {
+  test('with Lazy Loading from a Remote Datasource - Scroll to find a record and get content @lazy-loading', async ({}) => {
     const browser = await firefox.launch({headless: true});
     const browserContext = await browser.newContext();
     const page = await browserContext.newPage();

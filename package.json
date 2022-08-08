@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test:ui:chrome": "npx cross-env DEBUG=pw:api playwright test --project=ui-chrome",
+    "test:ui:ff": "npx cross-env playwright test --project=ui-firefox"
+
   },
   "keywords": [],
   "author": "",

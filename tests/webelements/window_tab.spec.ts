@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 
-test("tc01: windows/tab ", async({page}) => {
+test("tc01: windows/tab @window", async({page}) => {
 
     await page.goto("https://automationfc.github.io/basic-form/index.html")
     await page.waitForSelector("a:has-text('GOOGLE')");

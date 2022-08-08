@@ -32,11 +32,10 @@ test.describe.parallel('Virtual scrolling', () => {
     await tableLocator.waitFor({ state: 'visible' });
     const innerLocator = await scrollToRowId('25', tableLocator, 'tr >> td:nth-child(1)');
     if (!innerLocator) throw Error('No Locator found to grab text');
-    await innerLocator.screenshot({path: 'preloaded.png'})
-    
+   
     const text = await innerLocator.innerText();
     
-    console.log("Preloaded Data::", text)
+  
     expect(text.length).toBeGreaterThan(1);
 
   });
@@ -50,9 +49,8 @@ test.describe.parallel('Virtual scrolling', () => {
     await tableLocator.waitFor({ state: 'visible' });
     const innerLocator = await scrollToRowId('25', tableLocator, 'tr >> td:nth-child(1)');
     if (!innerLocator) throw Error('No Locator found to grab text');
-    await innerLocator.screenshot({path: 'lazyloaded.png'})
     const text = await innerLocator.innerText();
-    console.log("Lazy Loading::", text)
+    
     expect(text.length).toBeGreaterThan(1);
 
   });

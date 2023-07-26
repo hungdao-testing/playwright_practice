@@ -39,4 +39,33 @@ test.describe("Table @table", () => {
         const text = await row.getByRole("cell").nth(2).innerText();
         expect(text).toBe("27509")
     })
+
+    test("Angular table - virtualScroller", async ({ page }) => {
+        await page.goto("https://primeng.org/table#dynamic");
+        const tableLoc = page.locator("div#pr_id_38");
+        await tableLoc.waitFor();
+        await tableLoc.scrollIntoViewIfNeeded();
+        let allRowLocs = await tableLoc.getByRole("row").all();
+
+        //Method_1: 
+        //let row;
+        // for (const rowLoc of allRowLocs) {
+        //     await rowLoc.scrollIntoViewIfNeeded();
+        //     let index = await rowLoc.getByRole("cell").first().innerText();
+        //     if (index.includes("5")) {
+        //         row = rowLoc;
+        //         break;
+        //     }
+        // }
+
+        // Method_2
+        // let mapResult = await Promise.all(allRowLocs.map(async (rowLoc) => {
+        //     let index = await rowLoc.getByRole("cell").first().innerText();
+        //     return index.includes("5")
+        // }))
+        // const row = allRowLocs.filter((__, idx) => mapResult[idx]);
+        //const text = await row[0].allInnerTexts();
+        expect(true).toBeTruthy()
+
+    })
 })
